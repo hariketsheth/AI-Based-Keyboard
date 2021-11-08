@@ -70,3 +70,10 @@ while True:
                                 cv2.FONT_HERSHEY_PLAIN, 4, (255, 255, 255), 4)
                     finalText += button.text
                     sleep(0.15)
+                
+    cv2.rectangle(img, (50, 350), (700, 450), (50, 168, 133), cv2.FILLED)
+    cv2.putText(img, finalText, (60, 430),
+                cv2.FONT_HERSHEY_PLAIN, 5, (255, 255, 255), 5)
+
+    cv2.imshow("Image", img)
+    cv2.waitKey(1)
