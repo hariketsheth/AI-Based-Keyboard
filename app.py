@@ -50,3 +50,15 @@ while True:
     img = detector.findHands(img)
     lmList, bboxInfo = detector.findPosition(img)
     img = drawAll(img, buttonList)
+
+    if lmList:
+        for button in buttonList:
+            x, y = button.pos
+            w, h = button.size
+
+            if x < lmList[8][0] < x + w and y < lmList[8][1] < y + h:
+                cv2.rectangle(img, (x - 5, y - 5), (x + w + 5, y + h + 5), (50, 168, 133), cv2.FILLED)
+                cv2.putText(img, button.text, (x + 20, y + 65),
+                            cv2.FONT_HERSHEY_PLAIN, 4, (255, 255, 255), 4)
+                l, _, _ = detector.findDistance(8, 12, img, draw=False)
+                print(l)
