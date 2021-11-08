@@ -62,3 +62,11 @@ while True:
                             cv2.FONT_HERSHEY_PLAIN, 4, (255, 255, 255), 4)
                 l, _, _ = detector.findDistance(8, 12, img, draw=False)
                 print(l)
+
+                if l < 30:
+                    keyboard.press(button.text)
+                    cv2.rectangle(img, button.pos, (x + w, y + h), (255, 255, 255), cv2.FILLED)
+                    cv2.putText(img, button.text, (x + 20, y + 65),
+                                cv2.FONT_HERSHEY_PLAIN, 4, (255, 255, 255), 4)
+                    finalText += button.text
+                    sleep(0.15)
