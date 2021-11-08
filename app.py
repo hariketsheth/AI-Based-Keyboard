@@ -16,3 +16,20 @@ keys = [["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
 finalText = ""
 
 keyboard = Controller()
+def drawAll(img, buttonList):
+     imgNew = np.zeros_like(img, np.uint8)
+     for button in buttonList:
+         x, y = button.pos
+         cvzone.cornerRect(imgNew, (button.pos[0], button.pos[1], button.size[0], button.size[1]),
+                           20, rt=0)
+         cv2.rectangle(imgNew, button.pos, (x + button.size[0], y + button.size[1]),
+                       (255, 0, 255), cv2.FILLED)
+         cv2.putText(imgNew, button.text, (x + 40, y + 60),
+                     cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 3)
+
+     out = img.copy()
+     alpha = 0.5
+     mask = imgNew.astype(bool)
+     print(mask.shape)
+     out[mask] = cv2.addWeighted(img, alpha, imgNew, 1 - alpha, 0)[mask]
+     return out
