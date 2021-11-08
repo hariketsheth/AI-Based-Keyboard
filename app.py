@@ -33,3 +33,9 @@ def drawAll(img, buttonList):
      print(mask.shape)
      out[mask] = cv2.addWeighted(img, alpha, imgNew, 1 - alpha, 0)[mask]
      return out
+
+class Button():
+    def __init__(self, pos, text, size=[85, 85]):
+        self.pos = pos
+        self.size = size
+        self.text = text
