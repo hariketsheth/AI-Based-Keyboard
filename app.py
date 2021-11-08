@@ -44,3 +44,9 @@ buttonList = []
 for i in range(len(keys)):
     for j, key in enumerate(keys[i]):
         buttonList.append(Button([100 * j + 50, 100 * i + 50], key))
+
+while True:
+    success, img = cap.read()
+    img = detector.findHands(img)
+    lmList, bboxInfo = detector.findPosition(img)
+    img = drawAll(img, buttonList)
