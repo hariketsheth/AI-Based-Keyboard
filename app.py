@@ -39,3 +39,8 @@ class Button():
         self.pos = pos
         self.size = size
         self.text = text
+      
+buttonList = []
+for i in range(len(keys)):
+    for j, key in enumerate(keys[i]):
+        buttonList.append(Button([100 * j + 50, 100 * i + 50], key))
